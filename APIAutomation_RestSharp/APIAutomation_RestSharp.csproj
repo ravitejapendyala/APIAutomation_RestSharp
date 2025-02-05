@@ -483,7 +483,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
-    <None Include="Config\Configuration.runsettings" />
+    <None Include="Config\Configuration.runsettings">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="Features\UserDetailsFeature.feature" />
     <None Include="packages.config" />
   </ItemGroup>

@@ -7,6 +7,8 @@ using System.Text;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
+using System.Net.Sockets;
+using System.Xml;
 
 namespace APIAutomation_RestSharp.APIHelpers
 {
@@ -15,33 +17,56 @@ namespace APIAutomation_RestSharp.APIHelpers
         public RestClient restClient;
         public RestRequest restRequest;
         public RestResponse restResponse;
-        public string baseURL = "https://reqres.in/";
+        public static string baseURL;
+        public static string clientId;
+        public static string secret;
         public string url;
+
+        static Helpers()
+        {
+            baseURL = GetTestRunParameter("baseURL");
+            clientId = GetTestRunParameter("clientId");
+            secret = GetTestRunParameter("secret");
+        }
+
+        private static string GetTestRunParameter(string parameterName)
+        {
+            var runSettingsPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "config", "Configuration.runsettings");
+            if (!File.Exists(runSettingsPath))
+            {
+                throw new FileNotFoundException($"The configuration file '{runSettingsPath}' was not found.");
+            }
+
+            var doc = new XmlDocument();
+            doc.Load(runSettingsPath);
+            var node = doc.SelectSingleNode($"//Parameter[@name='{parameterName}']");
+            return node?.Attributes["value"]?.Value;
+        }
 
         public RestClient SetURL(string endPoint)
         {
-             url = Path.Combine(baseURL, endPoint);
-            restClient=new RestClient(url);
+            url = Path.Combine(baseURL, endPoint);
+            restClient = new RestClient(url);
             return restClient;
         }
 
         public RestRequest CreatePostRequest(string payload)
         {
-            var request = new RestRequest(url,Method.Post);
+            var request = new RestRequest(url, Method.Post);
             request.AddHeader("Accept", "application/json");
             request.AddParameter("application/json", payload, ParameterType.RequestBody);
             return request;
         }
+
         public RestRequest CreateGetRequest()
         {
             var request = new RestRequest(url, Method.Get);
             request.AddHeader("Accept", "application/json");
             return request;
-
         }
-        public RestRequest CreateUpdateRequest(string payload) 
-        {
 
+        public RestRequest CreateUpdateRequest(string payload)
+        {
             var request = new RestRequest(url, Method.Put);
             request.AddHeader("Accept", "application/json");
             request.AddParameter("application/json", payload, ParameterType.RequestBody);
@@ -55,33 +80,14 @@ namespace APIAutomation_RestSharp.APIHelpers
             return request;
         }
 
-        public  RestResponse ExecuteRequest(RestClient client , RestRequest request)
+        public RestResponse ExecuteRequest(RestClient client, RestRequest request)
         {
-            return  client.Execute(request);
-            
+            return client.Execute(request);
         }
 
-        /*
         public DTO GetContent<DTO>(RestResponse response)
         {
-            if (response.Headers.Any(h => h.Name == "Content-Type" && h.Value.ToString().Contains("application/json")))
-            {
-                return JsonConvert.DeserializeObject<DTO>(response.Content); ;
-            }
-            else
-            {
-                // Handle non-JSON response, log the error, or throw an exception
-                throw new InvalidOperationException("Non-JSON response received.");
-            }
+            return JsonConvert.DeserializeObject<DTO>(response.Content);
         }
-        */
-        public DTO GetContent<DTO>(RestResponse response)
-        {
-                return JsonConvert.DeserializeObject<DTO>(response.Content); 
-           
-        }
-
-
-
     }
 }

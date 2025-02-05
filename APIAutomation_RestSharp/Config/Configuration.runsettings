@@ -6,5 +6,8 @@
 		<Parameter name="ExecuteAgent" value="Local"/>
 		<Parameter name="QA_URL" value=""/>
 		<Parameter name="CaptureScreenshot" value="BOTH"/>
+		<Parameter name="baseURL" value="https://reqres.in/"/>
+		<Parameter name="clientId" value=""/>
+		<Parameter name="secret" value=""/>
 	</TestRunParameters>
 </RunSettings>
