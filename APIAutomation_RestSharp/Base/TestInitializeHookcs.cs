@@ -37,8 +37,10 @@ namespace APIAutomation_RestSharp.Base
 
         private static string GetCurrentProjectDirectory()
         {
-            // Implement logic to get the current project directory
-            return AppDomain.CurrentDomain.BaseDirectory;
+            // Get the current project directory by navigating up from the bin directory
+            var baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
+            var projectDirectory = Directory.GetParent(baseDirectory).Parent.Parent.FullName;
+            return projectDirectory;
         }
     }
 }
