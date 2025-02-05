@@ -470,7 +470,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="APIHelpers\Helpers.cs" />
-    <Compile Include="Base\LogHelpers.cs" />
     <Compile Include="Base\TestInitializeHookcs.cs" />
     <Compile Include="Class1.cs" />
     <Compile Include="DTO\CreateUserResponseDTO.cs" />
@@ -484,6 +483,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
+    <None Include="Config\Configuration.runsettings" />
     <None Include="Features\UserDetailsFeature.feature" />
     <None Include="packages.config" />
   </ItemGroup>
