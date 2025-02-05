@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RunSettings>
+  <TestRunParameters>
+    <Parameter name="Environment" value="QA" />
+    <Parameter name="Browser" value="chrome" />
+    <Parameter name="ExecuteAgent" value="Local"/>
+    <Parameter name="QA_URL" value=""/>
+    <Parameter name="CaptureScreenshot" value="BOTH"/>
+    <Parameter name="baseURL" value="https://reqres.in/"/>
+    <Parameter name="clientId" value=""/>
+    <Parameter name="secret" value=""/>
+  </TestRunParameters>
+</RunSettings>

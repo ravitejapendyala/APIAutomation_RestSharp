@@ -31,14 +31,14 @@ namespace APIAutomation_RestSharp.APIHelpers
 
         private static string GetTestRunParameter(string parameterName)
         {
-            var runSettingsPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "config", "Configuration.runsettings");
-            if (!File.Exists(runSettingsPath))
+            var configFilePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Config", "TestConfig.xml");
+            if (!File.Exists(configFilePath))
             {
-                throw new FileNotFoundException($"The configuration file '{runSettingsPath}' was not found.");
+                throw new FileNotFoundException($"The configuration file '{configFilePath}' was not found.");
             }
 
             var doc = new XmlDocument();
-            doc.Load(runSettingsPath);
+            doc.Load(configFilePath);
             var node = doc.SelectSingleNode($"//Parameter[@name='{parameterName}']");
             return node?.Attributes["value"]?.Value;
         }
