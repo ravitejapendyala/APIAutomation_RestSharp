@@ -1,0 +1,30 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34511.84
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "APIAutomation_RestSharp", "APIAutomation_RestSharp\APIAutomation_RestSharp.csproj", "{BB7E4E8B-9E40-4E50-BF84-DE9BE83D7C96}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{1611D6E8-586E-4B6F-AC2C-9C7080898E61}"
+	ProjectSection(SolutionItems) = preProject
+		Configuration.runsettings = Configuration.runsettings
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BB7E4E8B-9E40-4E50-BF84-DE9BE83D7C96}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BB7E4E8B-9E40-4E50-BF84-DE9BE83D7C96}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BB7E4E8B-9E40-4E50-BF84-DE9BE83D7C96}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BB7E4E8B-9E40-4E50-BF84-DE9BE83D7C96}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A363C786-DF4B-49B5-B415-895CE797B9D5}
+	EndGlobalSection
+EndGlobal
